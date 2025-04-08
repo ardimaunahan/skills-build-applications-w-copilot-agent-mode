@@ -17,7 +17,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
+# See https://docs.djangoproject.com/en/5.2/howto/deployment-checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-(^#cjtk&w@g-+&wsw_+_m@d06)-!c4*7$b)slri#@0_urq9(20"
@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
-    "djongo",
     "corsheaders",
     "octofit_tracker",
 ]
@@ -79,11 +78,15 @@ WSGI_APPLICATION = "octofit_tracker.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "djongo",
-        "NAME": "octofit_db",
-        "HOST": "localhost",
-        "PORT": 27017,
+        "ENGINE": "django.db.backends.dummy",  # Placeholder since we will use pymongo directly
     }
+}
+
+# MongoDB connection settings for pymongo
+MONGO_DB_SETTINGS = {
+    "HOST": "localhost",
+    "PORT": 27017,
+    "NAME": "octofit_db",
 }
 
 
