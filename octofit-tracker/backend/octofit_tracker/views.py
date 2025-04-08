@@ -3,6 +3,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import UserSerializer, TeamSerializer, ActivitySerializer, LeaderboardSerializer, WorkoutSerializer
 from .models import User, Team, Activity, Leaderboard, Workout
+from django.http import JsonResponse
+from django.urls import path
 
 @api_view(['GET'])
 def api_root(request, format=None):
@@ -18,6 +20,9 @@ def api_root(request, format=None):
         'leaderboard': base_url + 'api/leaderboard/',
         'workouts': base_url + 'api/workouts/'
     })
+
+def codespace_suffix(request):
+    return JsonResponse({"suffix": "-8000.app.github.dev"})
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -38,3 +43,7 @@ class LeaderboardViewSet(viewsets.ModelViewSet):
 class WorkoutViewSet(viewsets.ModelViewSet):
     queryset = Workout.objects.all()
     serializer_class = WorkoutSerializer
+
+urlpatterns = [
+    path('codespace-suffix/', codespace_suffix, name='codespace_suffix'),
+]
