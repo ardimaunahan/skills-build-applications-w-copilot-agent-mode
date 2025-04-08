@@ -78,15 +78,11 @@ WSGI_APPLICATION = "octofit_tracker.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.dummy",  # Placeholder since we will use pymongo directly
+        "ENGINE": "djongo",
+        "NAME": "octofit_db",
+        "HOST": "localhost",
+        "PORT": 27017,
     }
-}
-
-# MongoDB connection settings for pymongo
-MONGO_DB_SETTINGS = {
-    "HOST": "localhost",
-    "PORT": 27017,
-    "NAME": "octofit_db",
 }
 
 
