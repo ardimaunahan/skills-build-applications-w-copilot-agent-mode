@@ -6,7 +6,7 @@ SECRET_KEY = 'your-secret-key'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['localhost', 'glowing-invention-r4gj644p9hx9rv-8000.app.github.dev', '0.0.0.0']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
