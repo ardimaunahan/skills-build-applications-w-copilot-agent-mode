@@ -9,7 +9,7 @@ class User(models.Model):
 class Team(models.Model):
     _id = models.ObjectIdField()
     name = models.CharField(max_length=100)
-    members = models.ManyToManyField(User)  # Updated to ManyToManyField for compatibility
+    members = models.ArrayReferenceField(to=User, on_delete=models.CASCADE)
 
 class Activity(models.Model):
     _id = models.ObjectIdField()
